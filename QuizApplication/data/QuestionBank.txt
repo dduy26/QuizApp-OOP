@@ -1,0 +1,60 @@
+MCQ
+1
+Which feature of OOP is used to reuse existing code and avoid code duplication?
+Encapsulation
+Inheritance
+Polymorphism
+Abstraction
+B
+MCQ
+2
+Which keyword in C++ is used to achieve run-time polymorphism with virtual functions?
+static
+friend
+virtual
+template
+C
+MCQ
+3
+Which STL container stores elements as key-value pairs sorted in a tree structure?
+vector
+list
+map
+deque
+C
+MCQ
+4
+What operator cannot be overloaded in C++?
+sizeof
++
+==
+[]
+A
+MCQ
+5
+Which concept describes a function template that operates with generic data types?
+Generic Programming
+Data Hiding
+Dynamic Binding
+Multiple Inheritance
+A
+TF
+6
+A base class destructor should be declared virtual to prevent memory leaks when deleting via a base pointer.
+T
+TF
+7
+In private inheritance, public members of the base class become public in the derived class.
+F
+TF
+8
+STL algorithms like sort() and find() are member functions inside the vector class.
+F
+TF
+9
+Pure virtual functions make a class an abstract class and force derived classes to implement them.
+T
+TF
+10
+The std::vector container automatically adjusts its capacity when elements are added with push_back().
+T
