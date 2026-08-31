@@ -1,5 +1,8 @@
 #pragma once
 #include<iostream>
+#include<string>
+#include<vector>
+#include<cctype>
 using namespace std;
 
 class Question{
@@ -10,12 +13,12 @@ protected:
     string m_type;
 public:
     Question(int id , string content , string correctAnswer , string type);
-    ~Question();
-    virtual bool display() = 0;
+    virtual ~Question();
+    virtual void display() const = 0;
     virtual bool checkAnswer(const string& answer) const = 0;
     //get
-    int getId();
-    string getContent();
-    string getCorrectAnswer();
-    string getType();
-}
+    int getId() const;
+    string getContent() const;
+    string getCorrectAnswer() const;
+    string getType() const;
+};

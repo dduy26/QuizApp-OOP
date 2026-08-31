@@ -1,4 +1,4 @@
-
+#pragma once
 #include "Question.h"
 
 class TFQuestion : public Question {

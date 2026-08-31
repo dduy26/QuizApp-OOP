@@ -1,8 +1,8 @@
-#include "MCQuestion.h"
+#include "MCQQuestion.h"
 #include <cctype>
 
     MCQQuestion::MCQQuestion(int id, const string& content, const vector<string>& options, const string& correctAnswer)
-        :Question(id , content , correctAnswer , "MCQ") , m_options(options)
+        :Question(id , content , correctAnswer , "MCQ") , m_options(options){}
     
     MCQQuestion::~MCQQuestion() {}
     //ép kiểu in ra màn hình đáp án ABCD từ vector thay vì mã ASCII 

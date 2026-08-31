@@ -1,5 +1,5 @@
-#include "TFQuestion.h"
-#include <cctype>
+#include "TrueFalseQuestion.h"
+
 
 TFQuestion::TFQuestion(int id, const string& content, const string& correctAnswer)
     : Question(id, content, correctAnswer, "TF") {}
