@@ -108,20 +108,6 @@ void ExamSession::displayCurrentQuestion() const
    
     m_questions[m_currentIndex]->display();
 
-cout << "\nTrang thai: ";
-
-if (m_status[m_currentIndex] == AnswerStatus::Skipped) {
-    cout << "Da bo qua";
-}
-else if (m_status[m_currentIndex] == AnswerStatus::Answered) {
-    cout << "Da tra loi";
-}
-else {
-    cout << "Chua tra loi";
-}
-
-cout << endl;
-
 // Hien thi trang thai cua cau hien tai
 cout << "\nTrang thai: ";
 
@@ -426,13 +412,18 @@ void ExamSession::runExam()
         }
 
         case 4:
-        {
-            if (skipCurrentQuestion()) {
-                cout << "Da bo qua cau hoi." << endl;
-            }
+{
+    if (skipCurrentQuestion()) {
+        cout << "Da bo qua cau hoi." << endl;
 
-            break;
+        // Neu chua phai cau cuoi thi chuyen sang cau tiep theo
+        if (getCurrentQuestionNumber() < getTotalQuestions()) {
+            goToQuestion(getCurrentQuestionNumber() + 1);
         }
+    }
+
+    break;
+}
 
         case 5:
         {
