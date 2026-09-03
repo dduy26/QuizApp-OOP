@@ -82,4 +82,7 @@ public:
 
     // Trả về số giây đã trôi qua từ khi bắt đầu thi
     long long getElapsedSeconds() const;
+
+    // Chạy menu làm bài thi
+    void runExam();
 };

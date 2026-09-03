@@ -108,16 +108,47 @@ void ExamSession::displayCurrentQuestion() const
    
     m_questions[m_currentIndex]->display();
 
-    cout << "\nDap an hien tai: ";
+cout << "\nTrang thai: ";
 
-    // Nếu chuỗi đáp án đang rỗng,
-    // nghĩa là chưa có đáp án.
-    if (m_answers[m_currentIndex].empty()) {
-        cout << "Chua tra loi";
-    }
-    else {
-        cout << m_answers[m_currentIndex];
-    }
+if (m_status[m_currentIndex] == AnswerStatus::Skipped) {
+    cout << "Da bo qua";
+}
+else if (m_status[m_currentIndex] == AnswerStatus::Answered) {
+    cout << "Da tra loi";
+}
+else {
+    cout << "Chua tra loi";
+}
+
+cout << endl;
+
+// Hien thi trang thai cua cau hien tai
+cout << "\nTrang thai: ";
+
+if (m_status[m_currentIndex] == AnswerStatus::Answered) {
+    cout << "Da tra loi";
+}
+else if (m_status[m_currentIndex] == AnswerStatus::Skipped) {
+    cout << "Da bo qua";
+}
+else {
+    cout << "Chua tra loi";
+}
+
+cout << endl;
+
+
+// Hien thi dap an hien tai
+cout << "Dap an hien tai: ";
+
+if (m_answers[m_currentIndex].empty()) {
+    cout << "Chua co dap an";
+}
+else {
+    cout << m_answers[m_currentIndex];
+}
+
+cout << endl;
 
     cout << endl;
 
@@ -126,7 +157,6 @@ void ExamSession::displayCurrentQuestion() const
 
     cout << "====================================\n";
 }
-
 
 //trả lời câu hiện tại
 bool ExamSession::answerCurrentQuestion(
@@ -320,4 +350,143 @@ void ExamSession::displayProgress() const
     }
 
     cout << "===========================\n";
+}
+
+
+void ExamSession::runExam()
+{
+    if (m_questions.empty()) {
+        cout << "Khong co cau hoi trong bai thi." << endl;
+        return;
+    }
+
+    startExam();
+
+    bool submitted = false;
+
+    while (!submitted)
+    {
+        cout << "\n\n====================================\n";
+        cout << "          MENU LAM BAI\n";
+        cout << "====================================\n";
+
+        displayCurrentQuestion();
+
+        cout << "\n1. Tra loi cau hien tai";
+        cout << "\n2. Chuyen den cau theo so thu tu";
+        cout << "\n3. Chuyen den cau theo ID";
+        cout << "\n4. Bo qua cau hien tai";
+        cout << "\n5. Sua dap an";
+        cout << "\n6. Xem tien do lam bai";
+        cout << "\n7. Nop bai";
+
+        cout << "\n\nLua chon: ";
+
+        int choice;
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+        {
+            string answer;
+
+            cout << "Nhap dap an: ";
+            cin >> answer;
+
+            if (answerCurrentQuestion(answer)) {
+                cout << "Da luu dap an." << endl;
+            }
+
+            break;
+        }
+
+        case 2:
+        {
+            int questionNumber;
+
+            cout << "Nhap so thu tu cau hoi: ";
+            cin >> questionNumber;
+
+            goToQuestion(questionNumber);
+
+            break;
+        }
+
+        case 3:
+        {
+            int questionId;
+
+            cout << "Nhap ID cau hoi: ";
+            cin >> questionId;
+
+            goToQuestionById(questionId);
+
+            break;
+        }
+
+        case 4:
+        {
+            if (skipCurrentQuestion()) {
+                cout << "Da bo qua cau hoi." << endl;
+            }
+
+            break;
+        }
+
+        case 5:
+        {
+            int questionNumber;
+            string newAnswer;
+
+            cout << "Nhap so thu tu cau muon sua: ";
+            cin >> questionNumber;
+
+            cout << "Nhap dap an moi: ";
+            cin >> newAnswer;
+
+            if (modifyAnswer(questionNumber, newAnswer)) {
+                cout << "Da cap nhat dap an." << endl;
+            }
+
+            break;
+        }
+
+        case 6:
+        {
+            displayProgress();
+            break;
+        }
+
+        case 7:
+        {
+            cout << "\nBan co chac muon nop bai? (Y/N): ";
+
+            char confirm;
+            cin >> confirm;
+
+            if (confirm == 'Y' || confirm == 'y')
+            {
+                submitted = true;
+
+                cout << "\nDa nop bai." << endl;
+
+                cout << "Tong thoi gian lam bai: ";
+                displayTime();
+
+                cout << "\nTrang thai bai lam:" << endl;
+
+                displayProgress();
+            }
+
+            break;
+        }
+
+        default:
+        {
+            cout << "Lua chon khong hop le." << endl;
+            break;
+        }
+        }
+    }
 }
