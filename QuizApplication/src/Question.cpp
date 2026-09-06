@@ -5,15 +5,15 @@
     :m_id(id), m_content(content), m_correctAnswer(correctAnswer),m_type(type){}
     Question::~Question(){}
     //get
-    int Question::getId(){
+    int Question::getId() const {
         return m_id;
     }
-    string Question::getContent(){
+    string Question::getContent() const {
         return m_content;
     }
-    string Question::getCorrectAnswer(){
+    string Question::getCorrectAnswer() const {
         return m_correctAnswer;
     }
-    string Question::getType(){
+    string Question::getType() const {
         return m_type;
     }

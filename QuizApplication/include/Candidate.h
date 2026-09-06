@@ -5,24 +5,24 @@
 using namespace std;
 
 class Candidate {
-    private:
+private:
     string candidateID;
     string fullName;
     string className;
 
 public:
-    // Constructor mặc định và tham số
-    Candidate(string id = "", string name = "", string cName = "");
+// Constructor mặc định và tham số
+Candidate(string id = "", string name = "", string cName = "");
 
-    // Getters & Setters
-    string getCandidateID() const;
-    string getFullName() const;
-    string getClassName() const;
+// Getters & Setters
+string getCandidateID() const;
+string getFullName() const;
+string getClassName() const;
 
-    void setCandidateID(const string& id);
-    void setFullName(const string& name);
-    void setClassName(const string& cName);
+void setCandidateID(const string& id);
+void setFullName(const string& name);
+void setClassName(const string& cName);
 
-    friend istream& operator>>(istream& in, Candidate& c);
+friend istream& operator>>(istream& in, Candidate& c);
     friend ostream& operator<<(ostream& out, const Candidate& c);
 };

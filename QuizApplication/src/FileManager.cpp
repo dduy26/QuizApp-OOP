@@ -33,7 +33,7 @@ vector<Question*> FileManager::loadQuestions() {
             getline(file, d);
             getline(file, correctAns);
 
-            list.push_back(new MCQQuestion(id, content, a, b, c, d, correctAns));
+            list.push_back(new MCQQuestion(id, content, {a, b, c, d}, correctAns));
         }
         else if (type == "TF") {
             getline(file, correctAns);

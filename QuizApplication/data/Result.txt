@@ -1,0 +1,6 @@
+MSSV: 001
+Ho Ten: Duy
+Lop: IT01
+So cau dung: 1/10
+Tong diem: 1
+-------------------------

@@ -1,17 +1,17 @@
 #include "TrueFalseQuestion.h"
 
 
-TFQuestion::TFQuestion(int id, const string& content, const string& correctAnswer)
+TrueFalseQuestion::TrueFalseQuestion(int id, const string& content, const string& correctAnswer)
     : Question(id, content, correctAnswer, "TF") {}
 
-TFQuestion::~TFQuestion() {}
+TrueFalseQuestion::~TrueFalseQuestion() {}
 
-void TFQuestion::display() const {
+void TrueFalseQuestion::display() const {
     cout << "\n[Cau " << m_id << " - Dung / Sai]: " << m_content << "\n";
     cout << "  [T] True (Dung)       [F] False (Sai)\n";
 }
 
-bool TFQuestion::checkAnswer(const string& answer) const {
+bool TrueFalseQuestion::checkAnswer(const string& answer) const {
     // 1. Kiểm tra chuỗi rỗng để tránh crash khi thí sinh nhấn Enter mà không nhập gì
     if (answer.empty()) {
         return false;
